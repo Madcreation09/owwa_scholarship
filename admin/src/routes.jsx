@@ -14,8 +14,7 @@ import {
   ServerStackIcon,
   RectangleStackIcon,
 } from "@heroicons/react/24/solid";
-import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
-import { Scholar } from "@/pages/scholars"
+import { Home, Profile, Tables, Notifications, Scholars, Disbursement } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 
 const icon = {
@@ -35,13 +34,13 @@ export const routes = [
     ],
   },
   {
-    layout: "Scholar",
+    layout: "dashboard",
     pages: [
       {
         icon: <AcademicCapIcon {...icon} />,
         name: "scholars",
         path: "/scholar",
-        element: <Scholar />,
+        element: <Scholars />,
       },
     ],
   },
@@ -52,7 +51,7 @@ export const routes = [
         icon: <DocumentCheckIcon {...icon} />,
         name: "activities",
         path: "/acivity",
-        element: <Scholar />,
+        element: <Scholars />,
       },
     ],
   },
@@ -63,18 +62,18 @@ export const routes = [
         icon: <FolderOpenIcon {...icon} />,
         name: "requirements",
         path: "/acivity",
-        element: <Scholar />,
+        element: <Scholars />,
       },
     ],
   },
   {
-    layout: "Activity",
+    layout: "dashboard",
     pages: [
       {
         icon: <WalletIcon {...icon} />,
         name: "disbursement",
-        path: "/acivity",
-        element: <Scholar />,
+        path: "/disbursement",
+        element: <Disbursement />,
       },
     ],
   },
@@ -85,7 +84,7 @@ export const routes = [
         icon: <PhoneIcon {...icon} />,
         name: "contact",
         path: "/acivity",
-        element: <Scholar />,
+        element: <Scholars />,
       },
     ],
   },
@@ -96,7 +95,7 @@ export const routes = [
         icon: <Cog8ToothIcon {...icon} />,
         name: "settings",
         path: "/acivity",
-        element: <Scholar />,
+        element: <Scholars />,
       },
     ],
   },
@@ -107,7 +106,7 @@ export const routes = [
         icon: <UsersIcon {...icon} />,
         name: "acccounts",
         path: "/acivity",
-        element: <Scholar />,
+        element: <Scholars />,
       },
     ],
   },

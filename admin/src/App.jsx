@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Dashboard, Scholar, Auth } from "@/layouts";
+import { Dashboard, Scholar, Auth, Disbursement } from "@/layouts";
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <Route path="/dashboard/*" element={<Dashboard />} />
       <Route path="/scholar/*" element={<Scholar />} />
       <Route path="/auth/*" element={<Auth />} />
+      <Route path="/disbursement/*" element={<Disbursement />} />
       {localStorage.getItem('token') && 
         <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
       }
