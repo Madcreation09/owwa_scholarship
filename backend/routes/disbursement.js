@@ -1,12 +1,12 @@
 const express = require("express");
-const Scholar = require("../models/scholarModel");
+const Disbursement = require("../models/disbursementModel");
 const {
   getAllData,
   getData,
   storeData,
   updateData,
   deleteData,
-} = require("../controllers/scholarController");
+} = require("../controllers/disbursementController");
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.get("/", getAllData);
 
 router.get("/:id", getData);
 
-router.put("/:id", updateData);
+router.patch("/:id", updateData);
 
 router.post("/", storeData);
 

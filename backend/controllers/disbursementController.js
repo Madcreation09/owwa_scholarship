@@ -1,32 +1,34 @@
-const Scholar = require("../models/scholarModel");
+const Disbursement = require("../models/disbursementModel");
 const mongoose = require("mongoose");
 
 const getAllData = async (req, res) => {
-  const data = await Scholar.find({});
+  const data = await Disbursement.find({});
   res.status(200).json(data);
 };
 
 const getData = async (req, res) => {
-  const scholar = await Scholar.findById(req.params.id);
+  const disbursement = await Disbursement.findById(req.params.id);
 
-  if (scholar) {
-    res.json(scholar);
+  if (disbursement) {
+    res.json(disbursement);
   } else {
     res.status(404);
-    throw new Error("Scholar not found");
+    throw new Error("Disbursement not found");
   }
 };
 
 const storeData = async (req, res) => {
-  const { name, year_level, mobile, email, status } = req.body;
+  const { name, mobile, email, status, date, place, cheque_no } = req.body;
 
   try {
-    const data = await Scholar.create({
+    const data = await Disbursement.create({
       name,
-      year_level,
       mobile,
       email,
       status,
+      date,
+      place,
+      cheque_no,
     });
     res.status(200).json(data);
   } catch (error) {
@@ -40,7 +42,7 @@ const updateData = async (req, res) => {
     return res.status(404).json({ error: "Invalid ID" });
   }
 
-  const data = await Scholar.findByIdAndUpdate(
+  const data = await Disbursement.findByIdAndUpdate(
     { _id: id },
     {
       ...req.body,
@@ -55,16 +57,16 @@ const updateData = async (req, res) => {
 };
 
 const deleteData = async (req, res) => {
-  const scholar = await Scholar.findById(req.params.id);
-  console.log(scholar);
-  if (!scholar) {
+  const disbursement = await Disbursement.findById(req.params.id);
+
+  if (!disbursement) {
     res.status(404);
-    throw new Error("Scholar not found");
+    throw new Error("Record not found");
   }
 
-  await scholar.deleteOne();
+  await disbursement.deleteOne();
 
-  res.json({ message: "Scholar deleted successfully" });
+  res.json({ message: "Record deleted successfully" });
 };
 
 module.exports = {

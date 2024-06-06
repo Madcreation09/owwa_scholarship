@@ -2,18 +2,15 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const scholarSchema = new Schema(
+const disbursementSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    year_level: {
-      type: String,
-      required: true,
-    },
     mobile: {
       type: String,
+      required: true,
     },
     email: {
       type: String,
@@ -23,8 +20,20 @@ const scholarSchema = new Schema(
       type: String,
       required: true,
     },
+    date: {
+      type: Date,
+      required: true,
+    },
+    place: {
+      type: String,
+      required: true,
+    },
+    cheque_no: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Scholar", scholarSchema);
+module.exports = mongoose.model("Disbursement", disbursementSchema);
