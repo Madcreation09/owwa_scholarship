@@ -26,10 +26,15 @@ app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "admin/dist")));
+  app.use(express.static(path.join(__dirname, "../admin/dist")));
+
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "admin", "dist", "index.thml"))
+    res.sendFile(path.resolve(__dirname, "admin", "dist", "index.html"))
   );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
 }
 
 app.use("/user", userRoute);
@@ -40,7 +45,7 @@ app.use("/disbursement", disbursementRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(process.env.PORT || 4000, () => {
       console.log(
         "Successfully connected to Database & Listening port",
         process.env.PORT
